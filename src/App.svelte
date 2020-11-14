@@ -1,10 +1,18 @@
 <script>
 	export let name;
+	import Login from './Login.svelte';
+	import { authStatus } from './utils/auth.js';
+	import Item from './Item.svelte'
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	{#if !$authStatus}
+	<Login/>
+	{:else}
+	<Item/>
+	{/if}
 </main>
 
 <style>
